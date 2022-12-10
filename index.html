@@ -6,8 +6,133 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Divyanshi Varshney</title>
-    <link rel="stylesheet" href="./style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-image: linear-gradient(90deg, gray, yellow);
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 250vh;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            /* align-items: center; */
+            justify-content: center;
+            /* flex-direction: column; */
+        }
+
+        .banner {
+            height: 400px;
+            width: 70%;
+            background-image: url(./images.jfif);
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 50px;
+            margin: 50px;
+            padding: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .heading {
+            background-color: rgba(0, 0, 0, 0.523);
+            width: 70%;
+            /* justify-content: center; */
+            /* align-items: center; */
+        }
+
+        .heading h1 {
+            color: white;
+            text-align: center;
+            font-size: 60px;
+            margin: 20px;
+        }
+
+        main {
+            /* width: 120%; */
+            padding: 50px 0px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        article {
+            background-color: white;
+            width: 800px;
+            height: 780px;
+            overflow: auto;
+            margin-right: 20px;
+        }
+
+        aside {
+            width: 400px;
+            height: 1000px;
+        }
+
+        section {
+            background-color: white;
+            margin-bottom: 30px;
+        }
+
+        .head {
+            padding: 10px;
+            background-color: rgba(220, 220, 220, 0.623);
+        }
+
+        .bo {
+            padding: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 20px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 20px;
+        }
+
+        .books {
+            height: 200px;
+            font-size: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        article {
+            font-size: 25px;
+        }
+
+        .b {
+            padding: 50px;
+            font-size: 20px;
+        }
+
+        .h {
+            padding: 20px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+    <!-- <link rel="stylesheet" href="./style.css"> -->
 </head>
+
 <body>
     <div class="container">
         <div class="banner">
@@ -55,81 +180,83 @@
                 </section>
             </aside>
         </main>
-        <br>
-        <br>
-        <a href="./game.html" id="game" style="font-size: 30px;color: #000; margin-left: 0px;">Next</a>
-        <script>
-            document.getElementById("alice").addEventListener("click", book);
-            document.getElementById("hyde").addEventListener("click", book);
-            document.getElementById("lord").addEventListener("click", book);
-            function book(e) {
-                e.preventDefault();
-                if (e.target.id == "alice") {
-                    read("./books/AliceInWonderland.txt", "Alice In WonderLand");
-                    document.getElementById(m);
-                    m.innerHTML = `alice:385 time(s) <br>
+    </div>
+    <br>
+    <br>
+    <a href="./game.html" id="game"
+        style="font-size: 40px;color: #000; margin-bottom: 50px; margin-left: 200px; text-decoration: underline;">Next</a>
+    <script>
+        document.getElementById("alice").addEventListener("click", book);
+        document.getElementById("hyde").addEventListener("click", book);
+        document.getElementById("lord").addEventListener("click", book);
+        function book(e) {
+            e.preventDefault();
+            if (e.target.id == "alice") {
+                read("./books/AliceInWonderland.txt", "Alice In WonderLand");
+                document.getElementById(m);
+                m.innerHTML = `alice:385 time(s) <br>
         very:144 time(s) <br>
         little:128 time(s) <br>
         out:113 time(s) <br>
         down:101 time(s)`;
-                }
-                if (e.target.id == "hyde") {
-                    read("./books/JekyllAndHyde.txt", "Jekyll And Hyde");
-                    document.getElementById(m);
-                    m.innerHTML = `Jekyll:344 time(s) <br>
+            }
+            if (e.target.id == "hyde") {
+                read("./books/JekyllAndHyde.txt", "Jekyll And Hyde");
+                document.getElementById(m);
+                m.innerHTML = `Jekyll:344 time(s) <br>
         Hyde:284 time(s) <br>
         most:124 time(s) <br>
         doctor:113 time(s) <br>
         its:101 time(s)`;
-                }
-                if (e.target.id == "lord") {
-                    read("./books/LOTR.txt", "Lord Of The Rings");
-                    document.getElementById(m);
-                    m.innerHTML = `lord:458 time(s) <br>
+            }
+            if (e.target.id == "lord") {
+                read("./books/LOTR.txt", "Lord Of The Rings");
+                document.getElementById(m);
+                m.innerHTML = `lord:458 time(s) <br>
         rings:149 time(s) <br>
         power:127 time(s) <br>
         most:113 time(s) <br>
         for:101 time(s)`;
-                }
             }
-            function read(url, title) {
-                var client = new XMLHttpRequest();
-                client.open('GET', url);
-                client.onreadystatechange = function () {
-                    var t = client.responseText;
-                    document.getElementById("bhead").innerText = title;
-                    document.getElementById("btext").innerText = t;
+        }
+        function read(url, title) {
+            var client = new XMLHttpRequest();
+            client.open('GET', url);
+            client.onreadystatechange = function () {
+                var t = client.responseText;
+                document.getElementById("bhead").innerText = title;
+                document.getElementById("btext").innerText = t;
 
-                    details(t);
-                }
-                client.send();
+                details(t);
             }
-            const removeWords = ["a", "able", "about", "across", "after", "all", "almost", "also", "am", "among", "an", "and", "any", "are", "as", "at", "be", "because", "been", "but", "by", "can", "cannot", "could", "dear", "did", "do", "does", "either", "else", "ever", "every", "for", "from", "get", "got", "had", "has", "have", "he", "her", "hers", "him", "his", "how", "however", "i", "if", "in", "into", "is", "it", "its", "just", "least", "let", "like", "likely", "may", "me", "might", "most", "must", "my", "neither", "no", "nor", "not", "of", "off", "often", "on", "only", "or", "other", "our", "own", "rather", "said", "say", "says", "she", "should", "since", "so", "some", "than", "that", "the", "their", "them", "then", "there", "these", "they", "this", "tis", "to", "too", "twas", "us", "wants", "was", "we", "were", "what", "when", "where", "which", "while", "who", "whom", "why", "will", "with", "would", "yet", "you", "your", "ain't", "aren't", "can't", "could've", "couldn't", "didn't", "doesn't", "don't", "hasn't", "he'd", "he'll", "he's", "how'd", "how'll", "how's", "i'd", "i'll", "i'm", "i've", "isn't", "it's", "might've", "mightn't", "must've", "mustn't", "shan't", "she'd", "she'll", "she's", "should've", "shouldn't", "that'll", "that's", "there's", "they'd", "they'll", "they're", "they've", "wasn't", "we'd", "we'll", "we're", "weren't", "what'd", "what's", "when'd", "when'll", "when's", "where'd", "where'll", "where's", "who'd", "who'll", "who's", "why'd", "why'll", "why's", "won't", "would've", "wouldn't", "you'd", "you'll", "you're", "you've"];
-            function details(t) {
-                var lines = t.split("\n");
-                var words = [];
-                var wf = [];
-                lines.forEach((line) => {
-                    let ww = line.split(" ");
-                    ww.forEach((w) => {
-                        if (removeWords.indexOf(w) == -1 && !(w == " ")) {
-                            words.push(w);
-                            wf.push(t.split(w).length);
-                        }
-                    })
-                })
-                let max = 0;
-                let w1 = "";
-                for (let i = 0; i < words.length; i++) {
-                    if (wf[i] > max) {
-                        max = wf[i];
-                        w1 = words[i];
+            client.send();
+        }
+        const removeWords = ["a", "able", "about", "across", "after", "all", "almost", "also", "am", "among", "an", "and", "any", "are", "as", "at", "be", "because", "been", "but", "by", "can", "cannot", "could", "dear", "did", "do", "does", "either", "else", "ever", "every", "for", "from", "get", "got", "had", "has", "have", "he", "her", "hers", "him", "his", "how", "however", "i", "if", "in", "into", "is", "it", "its", "just", "least", "let", "like", "likely", "may", "me", "might", "most", "must", "my", "neither", "no", "nor", "not", "of", "off", "often", "on", "only", "or", "other", "our", "own", "rather", "said", "say", "says", "she", "should", "since", "so", "some", "than", "that", "the", "their", "them", "then", "there", "these", "they", "this", "tis", "to", "too", "twas", "us", "wants", "was", "we", "were", "what", "when", "where", "which", "while", "who", "whom", "why", "will", "with", "would", "yet", "you", "your", "ain't", "aren't", "can't", "could've", "couldn't", "didn't", "doesn't", "don't", "hasn't", "he'd", "he'll", "he's", "how'd", "how'll", "how's", "i'd", "i'll", "i'm", "i've", "isn't", "it's", "might've", "mightn't", "must've", "mustn't", "shan't", "she'd", "she'll", "she's", "should've", "shouldn't", "that'll", "that's", "there's", "they'd", "they'll", "they're", "they've", "wasn't", "we'd", "we'll", "we're", "weren't", "what'd", "what's", "when'd", "when'll", "when's", "where'd", "where'll", "where's", "who'd", "who'll", "who's", "why'd", "why'll", "why's", "won't", "would've", "wouldn't", "you'd", "you'll", "you're", "you've"];
+        function details(t) {
+            var lines = t.split("\n");
+            var words = [];
+            var wf = [];
+            lines.forEach((line) => {
+                let ww = line.split(" ");
+                ww.forEach((w) => {
+                    if (removeWords.indexOf(w) == -1 && !(w == " ")) {
+                        words.push(w);
+                        wf.push(t.split(w).length);
                     }
+                })
+            })
+            let max = 0;
+            let w1 = "";
+            for (let i = 0; i < words.length; i++) {
+                if (wf[i] > max) {
+                    max = wf[i];
+                    w1 = words[i];
                 }
-                console.log(w1);
             }
-        </script>
-        <!-- <script src="./script.js"></script> -->
+            console.log(w1);
+        }
+    </script>
+    <!-- <script src="./script.js"></script> -->
 </body>
 
 </html>
